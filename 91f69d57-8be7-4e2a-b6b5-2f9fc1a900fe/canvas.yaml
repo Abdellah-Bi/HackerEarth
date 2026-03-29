@@ -1,0 +1,627 @@
+id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+name: hackathons Canvas
+project_id: e405b493-0894-4ba9-ba5a-db0610f5097d
+global_imports: []
+python_global_imports: ''
+r_global_imports: ''
+requirements: []
+linux_packages: []
+environment_variables: []
+is_public: false
+organization_id: 3d02910d-49e8-406e-93e2-d5584165e86f
+layers:
+- blocks:
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Performs Kaplan-Meier and Cox Proportional Hazards survival analysis
+      on user tenure and churn. Generates survival probabilities at 7/14/30 days,
+      individual hazard scores, and risk acceleration coefficients. Produces KM curve
+      visualization with 95% Greenwood confidence intervals.
+    height: 1000
+    id: 11807814-e6b2-4db3-8445-c7f9695d88d3
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Survival Analysis
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 6000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Combines GBM, Random Forest, and Logistic Regression via 5-fold\
+      \ stacking. Meta-learner trains on OOF probability stacks to ensemble predictions.\
+      \ Evaluates 4 models (3 base + ensemble) with PR-AUC, ROC-AUC, recall, precision,\
+      \ F1. Exports model, metrics, and comparison table with grouped bar chart and\
+      \ PR curves. (Note: Block failed\u2014XGBoost unavailable; code uses Random\
+      \ Forest instead.)"
+    height: 1000
+    id: 27ddc963-f88b-4d6f-be38-f66a482fcc00
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: "Stacking Ensemble \u2014 GBM + XGBoost + LR"
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 12000
+    y: 11600
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: 'Validates 6 behavioral features (user events, consistency, tool
+      usage) against multicollinearity. Computes Pearson & Spearman correlation matrices,
+      flags correlated pairs (|r| > 0.75), and calculates VIF scores via OLS regression.
+      All features pass validation with acceptable VIF (avg: 2.44).'
+    height: 1000
+    id: 386dfb71-981d-4a4a-9363-de6a9481ced6
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Behavioral Consistency and Habit Engineering
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 4500
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: 'Introduces Phase 6: segments 3,033 users into 3 retention tiers
+      (High Risk, At Risk, Healthy) using GBM model probabilities and SHAP feature
+      importance from prior phases to guide business strategy.'
+    height: 1000
+    id: 3b381810-7a6d-44cf-a827-0a2acdbea078
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Phase 6 Header
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 4
+    variables: null
+    width: 1600
+    x: 4000
+    y: 6000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings:
+      compute_environment_type: 1
+    description: "Loads user retention data from Parquet file and validates schema,\
+      \ data types, row/column counts (409,287 rows \xD7 107 columns), timestamp ranges,\
+      \ and unique user/event counts with detailed assertion reporting."
+    height: 1000
+    id: 3d4c6a26-fabc-4f22-b15e-adde9ed8961e
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Example Dataset
+    parent_id: null
+    properties:
+      interactive_execution: false
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 0
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Trains an advanced GBM classifier on 23 enriched features (vs. 6
+      baseline features) using 5-fold CV, Platt calibration, and class weighting.
+      Generates PR-AUC, ROC-AUC, recall, and precision metrics. Creates a SHAP beeswarm
+      visualization highlighting new feature importance and compares performance against
+      the Phase 4 baseline model.
+    height: 1000
+    id: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: "Advanced GBM \u2014 Enriched Features"
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 10000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Segments 3,033 users into 3 retention tiers (High Risk <30%, At\
+      \ Risk 30\u201360%, Healthy \u226560%) using calibrated GBM probabilities and\
+      \ SHAP feature importance. Outputs tier distribution, dominant drivers per segment,\
+      \ CV metrics, and actionable retention strategy recommendations."
+    height: 1000
+    id: 44a006dc-f33c-4586-b16c-789206efb48b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Business Recommendation
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 2000
+    y: 6000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Computes SHAP feature importance values on the test set using TreeSHAP
+      to validate which features drive retention predictions on unseen data. Generates
+      ranked feature importance table and beeswarm visualization showing impact magnitude
+      and direction.
+    height: 1000
+    id: 520a33dc-9d31-4e40-9c60-c556bb8f3fcb
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: SHAP Analysis
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 6000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Performs temporal cohort train/test split (80% oldest users \u2192\
+      \ train, 20% newest \u2192 test) based on signup dates from event logs, then\
+      \ StandardScaler-normalizes features on training data only to prevent data leakage."
+    height: 1000
+    id: 627caf47-af2d-43b8-a2bb-269cd6c53fe6
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Feature Scaling
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 2500
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Segments 3k users into 6 behavioral clusters using K-means on engagement
+      metrics (early events, consistency, tool usage, AI agent adoption, exploration).
+      Outputs cluster profiles with human-readable segment names (e.g., Power Users,
+      Tool Explorers, AI-Native Users), silhouette & distribution charts.
+    height: 1000
+    id: 64c510f8-c107-4bb3-b5fa-6e4f9e7d6fea
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Behavioral Segmentation
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 6000
+    y: 7400
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Calculates retention intervention ROI by tier (High Risk, At Risk,
+      Healthy) using SaaS benchmarks (ARPU, LTV, CAC) to quantify revenue at risk,
+      expected users saved, intervention costs, and payback periods. Outputs tier-level
+      and portfolio ROI with visualization.
+    height: 1000
+    id: 685e46d6-b48b-42b4-9fd1-b0b9062bcd8a
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: "ROI Analysis \u2014 Retention Tiers"
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 12000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Performs exploratory data analysis on user retention dataset: audits\
+      \ missing values across 107 columns, visualizes top 20 event types, displays\
+      \ user tenure distribution histogram, and analyzes class imbalance between retained/churned\
+      \ users with labeling based on \u22653 weeks of activity."
+    height: 1000
+    id: 76bf3262-315e-4cab-a671-83a3220b653d
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: User Retention Analysis
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 1000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Comprehensive audit of a SaaS user retention ML pipeline covering
+      13 blocks. Identifies critical data leakage risks (label computed over full
+      observation window, features spanning retention outcome period), structural
+      gaps (temporal validation, cross-validation, baselines), and integrity issues
+      with model outputs. Recommends temporal feature windows, calibration, and stability
+      tests to make predictions actionable in production.
+    height: 1000
+    id: 7827183c-5b99-424b-b79c-9c220c23c3e5
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: DS Architecture Audit Report
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 3500
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Analyzes top 8 tools' association with user retention (days 1\u2013\
+      14) using grouped bar chart and statistical tests (chi-squared or Fisher's exact).\
+      \ Tests significance at p<0.05 to identify which tools correlate with retention\
+      \ vs. churn."
+    height: 1000
+    id: 7f351d64-1c08-4cae-a908-dc66b8959d41
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Correlation Heatmap
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 5000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Trains a calibrated gradient boosting classifier to predict user
+      retention using 6 leak-free features. Performs stratified 5-fold cross-validation,
+      applies Platt scaling for probability calibration, optimizes decision threshold
+      on PR curve, generates confusion matrix and feature importance visualizations,
+      and exports the trained model and scaler for production use.
+    height: 1000
+    id: 8528fdbb-118e-45ff-b7a9-7dc195c9dd92
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: GBM Retention Classifier
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 4000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Builds a leak-free user feature table from 14-day feature window\
+      \ events, computing 6 engagement metrics (first 24h/week events, consistency,\
+      \ tool diversity, agent usage, exploration index) plus retention label based\
+      \ on activity in days 15\u201390. Validates zero data leakage and missing values."
+    height: 1000
+    id: a8e352e9-c72a-4ce9-b031-ebc987b973f5
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: User Feature Table
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 2000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: Compares Baseline Phase 4 (6 features) vs Enriched Advanced GBM (22
+      features) with metrics tables, grouped bar charts, SHAP importance rankings,
+      and PR curve overlays. Shows +128% PR-AUC lift, +80% recall gain, feature category
+      breakdown (survival/timeseries/behavioral), and retrains models for visualization
+      reproducibility.
+    height: 1000
+    id: b06a9430-f8cd-4ca5-9b18-427aa4c57f4a
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: "Model Comparison \u2014 Baseline vs Enriched GBM"
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 12000
+    y: 10200
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: 'Segments users into monthly signup cohorts and calculates ROI metrics
+      for intervention strategies by tier: revenue at risk, intervention cost, net
+      savings, ROI%, and survival probability. Outputs summary table and charts showing
+      ROI trends.'
+    height: 1000
+    id: ba07b5a3-95d1-4c8e-8366-668eabac594a
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Cohort ROI Analysis
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 14000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: 'Evaluates two baseline models for user retention prediction: (1)
+      majority-class classifier (predicts all churn), and (2) logistic regression
+      with balanced class weights. Compares PR-AUC, recall, and precision metrics
+      using an 80/20 train-test split to establish performance benchmarks before GBM
+      model.'
+    height: 1000
+    id: c415d91a-8344-4705-8da2-d7c3d1979a97
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Retention Probability Scatter
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 3000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Merges time-series, survival, and behavioral features into base\
+      \ feature matrix using distinct_id joins. Creates enriched_features (3,033 users\
+      \ \xD7 25 cols) with 17+ new features including trend analysis, hazard scores,\
+      \ & customer segments. Fills missing values via medians & handles leakage removal."
+    height: 1000
+    id: cdb758a2-0d98-41bd-aff5-85e2b7793897
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Enriched Feature Matrix
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 8000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Partitions user events into feature (days 1\u201314) and label (days\
+      \ 15\u201390) windows from signup, computes binary retention label (\u22653\
+      \ active weeks in label window), and produces retention-labeled dataset for\
+      \ modeling."
+    height: 1000
+    id: da3ad790-6837-4453-b594-cb40ec1fa4dd
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: User Retention Labeling
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 1500
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Merges user features, survival metrics, enriched features, and ROI\
+      \ data into a unified dashboard_data DataFrame (3,033 users \xD7 35+ columns).\
+      \ Assembles dashboard_constants with SaaS economics, model metrics, and tier\
+      \ distributions for downstream visualization and analysis."
+    height: 1000
+    id: dfc28d9f-e69b-45da-877a-ebe9aa9e6323
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Dashboard Data Prep
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 16000
+    y: 8800
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Extracts 6 time-series decomposition features per user (trend slope,\
+      \ seasonality amplitude, residual volatility, R\xB2, peak-to-mean ratio, activity\
+      \ entropy) from daily event counts. Uses STL decomposition for users with 14+\
+      \ observations, falls back to rolling regression + day-of-week means for smaller\
+      \ datasets."
+    height: 1000
+    id: e07f2c0a-b287-4833-b42a-9874036a7c89
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: TS Decomposition Features
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 2000
+    y: 3000
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
+    description: "Trains a Gradient Boosting retention model and analyzes false positives\u2014\
+      users predicted to stay but who didn't. Calculates average tools used, percentage\
+      \ reaching 3+ events, and top tools for misclassified users."
+    height: 1000
+    id: f817412b-5c15-4823-a791-4a0874ac951b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: False Positive Analysis
+    parent_id: null
+    properties: {}
+    status: 1
+    type: 1
+    variables: null
+    width: 1600
+    x: 0
+    y: 5500
+  canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+  edges:
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 0813979a-19ac-4752-889d-9f568ba86606
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: c415d91a-8344-4705-8da2-d7c3d1979a97
+    target: 64c510f8-c107-4bb3-b5fa-6e4f9e7d6fea
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 08e143c9-e48b-401d-b9fa-1ffc5e41cbd4
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 8528fdbb-118e-45ff-b7a9-7dc195c9dd92
+    target: 386dfb71-981d-4a4a-9363-de6a9481ced6
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 0cff690c-d76d-430f-8efe-189e9e21c44f
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3d4c6a26-fabc-4f22-b15e-adde9ed8961e
+    target: 76bf3262-315e-4cab-a671-83a3220b653d
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 128b7dfc-fbc6-444d-a28f-417e3258e25b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 7827183c-5b99-424b-b79c-9c220c23c3e5
+    target: 8528fdbb-118e-45ff-b7a9-7dc195c9dd92
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 1e575bb8-ded1-4d7d-ba16-127e7728576c
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: e07f2c0a-b287-4833-b42a-9874036a7c89
+    target: cdb758a2-0d98-41bd-aff5-85e2b7793897
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 2c10e33c-d45c-4ebe-986d-8ad09657f100
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 76bf3262-315e-4cab-a671-83a3220b653d
+    target: da3ad790-6837-4453-b594-cb40ec1fa4dd
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 379770f8-083d-48f9-90c8-48ecf71fb6cf
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+    target: 27ddc963-f88b-4d6f-be38-f66a482fcc00
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 42ac2dec-690b-4d5b-b4c4-94706f3f019b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: cdb758a2-0d98-41bd-aff5-85e2b7793897
+    target: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 496c916d-f38c-460a-a8ee-2049a527121b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3b381810-7a6d-44cf-a827-0a2acdbea078
+    target: 11807814-e6b2-4db3-8445-c7f9695d88d3
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 5251ba4a-b4f6-4a33-9ccf-8945fe9e7cb2
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: f817412b-5c15-4823-a791-4a0874ac951b
+    target: 520a33dc-9d31-4e40-9c60-c556bb8f3fcb
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 52a2f246-7453-41f3-87c3-6d24288390f1
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 7f351d64-1c08-4cae-a908-dc66b8959d41
+    target: f817412b-5c15-4823-a791-4a0874ac951b
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 5fcdbea3-1c44-4807-b39a-17b08f44c792
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: da3ad790-6837-4453-b594-cb40ec1fa4dd
+    target: a8e352e9-c72a-4ce9-b031-ebc987b973f5
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 67fa4677-5433-4a00-a9cf-331eb971089a
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 685e46d6-b48b-42b4-9fd1-b0b9062bcd8a
+    target: ba07b5a3-95d1-4c8e-8366-668eabac594a
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 6ac576d4-26c0-4bb2-aeaf-f15cd1f9aca5
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 520a33dc-9d31-4e40-9c60-c556bb8f3fcb
+    target: 44a006dc-f33c-4586-b16c-789206efb48b
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 8779806b-4b8a-40a6-b778-4cff441facab
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 627caf47-af2d-43b8-a2bb-269cd6c53fe6
+    target: c415d91a-8344-4705-8da2-d7c3d1979a97
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 879d95c3-093e-47a8-b2a4-03f32032e250
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 44a006dc-f33c-4586-b16c-789206efb48b
+    target: 3b381810-7a6d-44cf-a827-0a2acdbea078
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 887e5d7c-90a9-41c5-8813-5f7fb10cfe97
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3b381810-7a6d-44cf-a827-0a2acdbea078
+    target: 64c510f8-c107-4bb3-b5fa-6e4f9e7d6fea
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 8d8ab410-31b9-4a8d-9027-f4c1df4fd331
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: c415d91a-8344-4705-8da2-d7c3d1979a97
+    target: e07f2c0a-b287-4833-b42a-9874036a7c89
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 9fd2c00f-9dbe-4b91-881b-b3e8efa4f2b7
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+    target: b06a9430-f8cd-4ca5-9b18-427aa4c57f4a
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: a521ac36-2d70-4cb6-9bc9-8ffb916d5913
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 8528fdbb-118e-45ff-b7a9-7dc195c9dd92
+    target: b06a9430-f8cd-4ca5-9b18-427aa4c57f4a
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: b020f517-1421-436b-b655-4f1bd0bbb9e4
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 44a006dc-f33c-4586-b16c-789206efb48b
+    target: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: b4d0206c-8cd1-4b8c-aad3-4ab768844b0f
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
+    target: 685e46d6-b48b-42b4-9fd1-b0b9062bcd8a
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: b904825f-4168-4597-82d5-a91ba50cb3ba
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: c415d91a-8344-4705-8da2-d7c3d1979a97
+    target: 11807814-e6b2-4db3-8445-c7f9695d88d3
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: c9eaf7ae-cdf0-4bf7-a771-99ad655ebecd
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: ba07b5a3-95d1-4c8e-8366-668eabac594a
+    target: dfc28d9f-e69b-45da-877a-ebe9aa9e6323
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: db6797d3-0c9a-432f-ad2f-f9fcaa9cff09
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 386dfb71-981d-4a4a-9363-de6a9481ced6
+    target: 7f351d64-1c08-4cae-a908-dc66b8959d41
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: e7626253-0244-4f31-af43-653c7924e03b
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 64c510f8-c107-4bb3-b5fa-6e4f9e7d6fea
+    target: cdb758a2-0d98-41bd-aff5-85e2b7793897
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: ebf7906c-3f71-4126-a2e4-a6e5fd8ac321
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 11807814-e6b2-4db3-8445-c7f9695d88d3
+    target: cdb758a2-0d98-41bd-aff5-85e2b7793897
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: f3717dff-e2f8-4c44-809b-254a8b630719
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: c415d91a-8344-4705-8da2-d7c3d1979a97
+    target: 7827183c-5b99-424b-b79c-9c220c23c3e5
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: f60e8965-4fcd-42e0-b45e-2d5fc5e4023e
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: a8e352e9-c72a-4ce9-b031-ebc987b973f5
+    target: 627caf47-af2d-43b8-a2bb-269cd6c53fe6
+  id: 3f84c935-1848-4f0d-be15-a03e16481304
+  name: hackathons Canvas
+  type: 1
+assets: []
