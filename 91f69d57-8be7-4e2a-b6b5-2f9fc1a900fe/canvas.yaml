@@ -54,6 +54,26 @@ layers:
   - auto_size: false
     canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
     compute_settings: null
+    description: "Comprehensive readiness audit of user retention prediction project.\
+      \ Scores 5 dimensions (model performance, code quality, pipeline completeness,\
+      \ documentation, business impact) to generate GO/NO-GO verdict with prioritized\
+      \ gaps\u2014notably missing external holdout test set, calibration curve validation,\
+      \ and standalone documentation."
+    height: 1000
+    id: 2e6fde29-93e6-4cdd-a3b5-39b982c8e5c4
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    name: Submission Readiness Report
+    parent_id: null
+    properties: {}
+    status: 3
+    type: 1
+    variables: null
+    width: 1600
+    x: 16000
+    y: 11600
+  - auto_size: false
+    canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    compute_settings: null
     description: 'Validates 6 behavioral features (user events, consistency, tool
       usage) against multicollinearity. Computes Pearson & Spearman correlation matrices,
       flags correlated pairs (|r| > 0.75), and calculates VIF scores via OLS regression.
@@ -595,6 +615,11 @@ layers:
     layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
     source: c415d91a-8344-4705-8da2-d7c3d1979a97
     target: e07f2c0a-b287-4833-b42a-9874036a7c89
+  - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+    id: 8ff86ee1-bddf-47af-9d80-efc600de0587
+    layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+    source: 62fb1210-50da-4085-9927-f51b5b504d89
+    target: 2e6fde29-93e6-4cdd-a3b5-39b982c8e5c4
   - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
     id: 9fd2c00f-9dbe-4b91-881b-b3e8efa4f2b7
     layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
