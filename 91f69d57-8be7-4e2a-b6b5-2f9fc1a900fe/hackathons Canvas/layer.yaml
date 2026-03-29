@@ -55,7 +55,7 @@ blocks:
   name: Behavioral Consistency and Habit Engineering
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -93,7 +93,7 @@ blocks:
   parent_id: null
   properties:
     interactive_execution: false
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -113,7 +113,7 @@ blocks:
   name: "Advanced GBM \u2014 Enriched Features"
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -132,7 +132,7 @@ blocks:
   name: Business Recommendation
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -151,7 +151,7 @@ blocks:
   name: SHAP Analysis
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -169,12 +169,31 @@ blocks:
   name: Feature Scaling
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
   x: 0
   y: 2500
+- auto_size: false
+  canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+  compute_settings: null
+  description: "Benchmarks a single GBM model vs. a stacking ensemble across latency\
+    \ (1\u201310K samples), memory footprint, throughput, and cross-validation metrics.\
+    \ Generates comparison tables and visualizations to support production deployment\
+    \ decisions."
+  height: 1000
+  id: 62fb1210-50da-4085-9927-f51b5b504d89
+  layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+  name: "Production Benchmark \u2014 Single GBM vs Ensemble"
+  parent_id: null
+  properties: {}
+  status: 3
+  type: 1
+  variables: null
+  width: 1600
+  x: 14000
+  y: 11600
 - auto_size: false
   canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
   compute_settings: null
@@ -188,7 +207,7 @@ blocks:
   name: Behavioral Segmentation
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -247,7 +266,7 @@ blocks:
   name: DS Architecture Audit Report
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -266,7 +285,7 @@ blocks:
   name: Correlation Heatmap
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -286,7 +305,7 @@ blocks:
   name: GBM Retention Classifier
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -305,7 +324,7 @@ blocks:
   name: User Feature Table
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -362,7 +381,7 @@ blocks:
   name: Retention Probability Scatter
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -381,7 +400,7 @@ blocks:
   name: Enriched Feature Matrix
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -399,7 +418,7 @@ blocks:
   name: User Retention Labeling
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -438,7 +457,7 @@ blocks:
   name: TS Decomposition Features
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
@@ -456,13 +475,18 @@ blocks:
   name: False Positive Analysis
   parent_id: null
   properties: {}
-  status: 1
+  status: 3
   type: 1
   variables: null
   width: 1600
   x: 0
   y: 5500
 edges:
+- canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+  id: 05256f50-fc10-4b51-8209-cc99f743ef32
+  layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+  source: 685e46d6-b48b-42b4-9fd1-b0b9062bcd8a
+  target: 62fb1210-50da-4085-9927-f51b5b504d89
 - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
   id: 0813979a-19ac-4752-889d-9f568ba86606
   layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
@@ -498,6 +522,11 @@ edges:
   layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
   source: 3fb8c356-f2d6-41ef-b9f7-6fd9161342bd
   target: 27ddc963-f88b-4d6f-be38-f66a482fcc00
+- canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
+  id: 3db5225a-0abc-4b02-bf2b-f35aecc15533
+  layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
+  source: 27ddc963-f88b-4d6f-be38-f66a482fcc00
+  target: 62fb1210-50da-4085-9927-f51b5b504d89
 - canvas_id: 91f69d57-8be7-4e2a-b6b5-2f9fc1a900fe
   id: 42ac2dec-690b-4d5b-b4c4-94706f3f019b
   layer_id: 3f84c935-1848-4f0d-be15-a03e16481304
